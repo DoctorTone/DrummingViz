@@ -2,7 +2,6 @@ import { Canvas } from "@react-three/fiber";
 import { Box, Sky, Stage, OrbitControls } from "@react-three/drei";
 import { SCENE } from "./state/Config";
 import Info from "./UI/Info";
-import InfoDialog from "./dialogs/InfoDialog";
 
 function App() {
   return (
@@ -29,7 +28,6 @@ function App() {
         />
       </Canvas>
       <Info />
-      <InfoDialog />
     </>
   );
 }

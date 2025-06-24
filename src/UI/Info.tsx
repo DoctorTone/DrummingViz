@@ -1,6 +1,7 @@
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import IconButton from "@mui/material/IconButton";
 import useStore from "../state/store";
+import InfoDialog from "../dialogs/InfoDialog";
 
 const Info = () => {
   const setShowInfoDialog = useStore((state) => state.setShowInfoDialog);
@@ -12,6 +13,7 @@ const Info = () => {
           <InfoOutlinedIcon fontSize={"large"} />
         </IconButton>
       </div>
+      <InfoDialog />
     </>
   );
 };
