@@ -2,6 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { Box, Sky, Stage, OrbitControls } from "@react-three/drei";
 import { SCENE } from "./state/Config";
 import Info from "./UI/Info";
+import DrumKit from "./models/DrumKit";
 
 function App() {
   return (
@@ -14,9 +15,7 @@ function App() {
           azimuth={0.25}
         />
         <Stage adjustCamera={false} shadows="contact" environment="city">
-          <Box>
-            <meshStandardMaterial color="red" />
-          </Box>
+          <DrumKit />
         </Stage>
         <OrbitControls
           makeDefault
