@@ -16,3 +16,7 @@ body {
   position: absolute;
   z-index: 100;
 }
+#info {
+  right: 2%;
+  bottom: 2%;
+}
