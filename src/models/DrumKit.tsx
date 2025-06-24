@@ -1,9 +1,14 @@
+import type { JSX } from "react";
 import { useGLTF } from "@react-three/drei";
 
-const DrumKit = () => {
+const DrumKit = (props: JSX.IntrinsicElements["group"]) => {
   const drumKit = useGLTF("./models/drum_kit.glb");
 
-  return <primitive object={drumKit.scene} />;
+  return (
+    <group {...props}>
+      <primitive object={drumKit.scene} />
+    </group>
+  );
 };
 
 export default DrumKit;

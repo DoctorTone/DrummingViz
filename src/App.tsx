@@ -15,7 +15,7 @@ function App() {
           azimuth={0.25}
         />
         <Stage adjustCamera={false} shadows="contact" environment="city">
-          <DrumKit />
+          <DrumKit rotation-y={Math.PI} />
         </Stage>
         <OrbitControls
           makeDefault
