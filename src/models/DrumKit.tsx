@@ -2,7 +2,7 @@ import type { JSX } from "react";
 import { useGLTF } from "@react-three/drei";
 
 const DrumKit = (props: JSX.IntrinsicElements["group"]) => {
-  const drumKit = useGLTF("./models/drum_kit.glb");
+  const drumKit = useGLTF("./models/drumKit2.glb");
 
   return (
     <group {...props}>

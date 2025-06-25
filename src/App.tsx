@@ -3,6 +3,7 @@ import { Box, Sky, Stage, OrbitControls } from "@react-three/drei";
 import { SCENE } from "./state/Config";
 import Info from "./UI/Info";
 import DrumKit from "./models/DrumKit";
+import { Suspense } from "react";
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
           azimuth={0.25}
         />
         <Stage adjustCamera={false} shadows="contact" environment="city">
-          <DrumKit rotation-y={Math.PI} />
+          <Suspense fallback={null}>
+            <DrumKit rotation-y={Math.PI} />
+          </Suspense>
         </Stage>
         <OrbitControls
           makeDefault
