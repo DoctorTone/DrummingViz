@@ -6,7 +6,7 @@ const SCENE = {
 
 const TIMELINE = {
   START_POS: 31,
-  END_POS: 68,
+  END_POS: 74,
   PLAY_SPEED: 15,
   DELTA: 0.0167,
 };
