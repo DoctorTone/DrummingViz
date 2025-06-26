@@ -15,6 +15,12 @@ const TimeLine = () => {
     setIsPlaying((prev) => !prev);
   };
 
+  const reset = () => {
+    setIsPlaying(false);
+    positionRef.current = TIMELINE.START_POS;
+    elemRef.current!.style.left = `${positionRef.current}%`;
+  };
+
   const animate = () => {
     positionRef.current += TIMELINE.DELTA * TIMELINE.PLAY_SPEED;
     elemRef.current!.style.left = `${positionRef.current}%`;
@@ -39,7 +45,7 @@ const TimeLine = () => {
     <>
       <div ref={elemRef} id="timeLine" className="panel"></div>
       <div id="play" className="panel">
-        <IconButton onClick={togglePlay}>
+        <IconButton onClick={reset}>
           <FastRewindIcon sx={{ fontSize: 60 }} />
         </IconButton>
         {isPlaying ? (
