@@ -6,6 +6,11 @@ import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
 import FastRewindIcon from "@mui/icons-material/FastRewind";
 import { Donut } from "react-dial-knob";
 import Typography from "@mui/material/Typography";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
 const TimeLine = () => {
   const requestRef = useRef(0);
@@ -52,7 +57,7 @@ const TimeLine = () => {
           Beats
         </Typography>
         <Donut
-          diameter={175}
+          diameter={150}
           min={0}
           max={120}
           step={1}
@@ -75,6 +80,26 @@ const TimeLine = () => {
             <PlayCircleOutlineIcon sx={{ fontSize: 70 }} />
           </IconButton>
         )}
+        <div>
+          <FormControl>
+            <FormLabel
+              id="grooves"
+              sx={{ textAlign: "center", color: "black" }}
+            >
+              Groove
+            </FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="grooves"
+              defaultValue="1"
+              name="radio-buttons-grooves"
+            >
+              <FormControlLabel value="1" control={<Radio />} label="1" />
+              <FormControlLabel value="2" control={<Radio />} label="2" />
+              <FormControlLabel value="3" control={<Radio />} label="3" />
+            </RadioGroup>
+          </FormControl>
+        </div>
       </div>
     </>
   );
