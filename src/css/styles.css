@@ -16,7 +16,15 @@ body {
   position: absolute;
   z-index: 100;
 }
+.w-100 {
+  width: 100%;
+}
 #info {
   right: 2%;
   bottom: 2%;
+}
+#score {
+  top: 1%;
+  left: 25%;
+  width: 50%;
 }
