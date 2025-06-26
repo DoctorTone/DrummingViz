@@ -32,7 +32,8 @@ body {
   top: 1.5%;
   left: 74%;
   width: 3px;
-  height: 125px;
+  margin-top: 1.9%;
+  height: 90px;
   background-color: red;
   z-index: 150;
 }
