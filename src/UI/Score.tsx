@@ -1,12 +1,25 @@
+import { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
+import useStore from "../state/store";
+import { SCORES } from "../state/Config";
 
 const Score = () => {
+  const [currentGroove, setCurrentGroove] = useState(0);
+  const groove = useStore((state) => state.groove);
+
+  useEffect(() => {
+    const nextGroove = parseInt(groove);
+    if (Number.isNaN(nextGroove)) return;
+
+    setCurrentGroove(nextGroove - 1);
+  }, [groove]);
+
   return (
     <div id="score" className="panel">
       <Typography variant="h6" sx={{ textAlign: "center" }}>
-        Groove 1
+        {SCORES[currentGroove].title}
       </Typography>
-      <img src="./images/drumScore1.png" className="w-100" />
+      <img src={`./images/${SCORES[currentGroove].score}`} className="w-100" />
     </div>
   );
 };

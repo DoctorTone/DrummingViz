@@ -11,6 +11,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import useStore from "../state/store";
 
 const TimeLine = () => {
   const requestRef = useRef(0);
@@ -18,6 +19,8 @@ const TimeLine = () => {
   const positionRef = useRef(TIMELINE.START_POS);
   const [isPlaying, setIsPlaying] = useState(false);
   const [beats, setBeats] = useState(60);
+  const groove = useStore((state) => state.groove);
+  const setGroove = useStore((state) => state.setGroove);
 
   const togglePlay = () => {
     setIsPlaying((prev) => !prev);
@@ -36,6 +39,11 @@ const TimeLine = () => {
       positionRef.current = TIMELINE.START_POS;
     }
     requestRef.current = requestAnimationFrame(animate);
+  };
+
+  const onGrooveChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setGroove((event.target as HTMLInputElement).value);
+    console.log("Groove changed");
   };
 
   useEffect(() => {
@@ -91,7 +99,8 @@ const TimeLine = () => {
             <RadioGroup
               row
               aria-labelledby="grooves"
-              defaultValue="1"
+              value={groove}
+              onChange={onGrooveChange}
               name="radio-buttons-grooves"
             >
               <FormControlLabel value="1" control={<Radio />} label="1" />
