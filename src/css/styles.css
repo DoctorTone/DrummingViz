@@ -29,17 +29,12 @@ body {
   width: 50%;
 }
 #timeLine {
-  top: 1%;
-  left: 25%;
-  width: 50%;
-  z-index: 150;
-}
-#bar {
+  top: 1.5%;
+  left: 31%;
   width: 3px;
-  height: 120px;
+  height: 125px;
   background-color: red;
-  margin-left: 10%;
-  margin-top: 10px;
+  z-index: 150;
 }
 #play {
   top: 1%;
