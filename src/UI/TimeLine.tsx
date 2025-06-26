@@ -1,15 +1,18 @@
 import { useEffect, useRef, useState } from "react";
-import Button from "@mui/material/Button";
 import { TIMELINE } from "../state/Config";
+import IconButton from "@mui/material/IconButton";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
+import FastRewindIcon from "@mui/icons-material/FastRewind";
 
 const TimeLine = () => {
   const requestRef = useRef(0);
   const elemRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef(TIMELINE.START_POS);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const togglePlay = () => {
-    setIsAnimating((prev) => !prev);
+    setIsPlaying((prev) => !prev);
   };
 
   const animate = () => {
@@ -22,7 +25,7 @@ const TimeLine = () => {
   };
 
   useEffect(() => {
-    if (isAnimating) {
+    if (isPlaying) {
       requestRef.current = requestAnimationFrame(animate);
     } else {
       cancelAnimationFrame(requestRef.current);
@@ -30,15 +33,24 @@ const TimeLine = () => {
 
     // Clean up on unmount
     return () => cancelAnimationFrame(requestRef.current);
-  }, [isAnimating]);
+  }, [isPlaying]);
 
   return (
     <>
       <div ref={elemRef} id="timeLine" className="panel"></div>
       <div id="play" className="panel">
-        <Button variant="contained" onClick={togglePlay}>
-          Play
-        </Button>
+        <IconButton onClick={togglePlay}>
+          <FastRewindIcon sx={{ fontSize: 60 }} />
+        </IconButton>
+        {isPlaying ? (
+          <IconButton onClick={togglePlay}>
+            <PauseCircleOutlineIcon sx={{ fontSize: 70 }} />
+          </IconButton>
+        ) : (
+          <IconButton onClick={togglePlay}>
+            <PlayCircleOutlineIcon sx={{ fontSize: 70 }} />
+          </IconButton>
+        )}
       </div>
     </>
   );
