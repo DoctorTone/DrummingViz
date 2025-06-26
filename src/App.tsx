@@ -5,6 +5,7 @@ import Info from "./UI/Info";
 import { DrumKit2 } from "./models/DrumKit2";
 import { Suspense } from "react";
 import Score from "./UI/Score";
+import TimeLine from "./UI/TimeLine";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       </Canvas>
       <Info />
       <Score />
+      <TimeLine />
     </>
   );
 }
