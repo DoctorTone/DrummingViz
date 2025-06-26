@@ -143,9 +143,11 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
   ) as unknown as GLTFResult;
 
   // DEBUG
-  console.log("Main = ", materials.Main_Color);
+  // console.log("Main = ", materials.Main_Color);
   const cymbalMat = new THREE.MeshStandardMaterial().copy(materials.Main_Color);
   cymbalMat.color = new THREE.Color().setHex(0x85671e);
+  cymbalMat.roughness = 0.1;
+  cymbalMat.metalness = 0.75;
 
   return (
     <group {...props} dispose={null}>
@@ -183,7 +185,7 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
             castShadow
             receiveShadow
             geometry={nodes.Circle005_Metal_0.geometry}
-            material={materials.Metal}
+            material={cymbalMat}
           />
         </group>
         <group
@@ -724,7 +726,7 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
           castShadow
           receiveShadow
           geometry={nodes.Circle006_Metal_0.geometry}
-          material={materials.Metal}
+          material={cymbalMat}
           position={[117.878, 9.15, -17.857]}
           rotation={[-Math.PI / 2, 0, 0]}
           scale={62.192}
