@@ -4,12 +4,15 @@ import IconButton from "@mui/material/IconButton";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
 import FastRewindIcon from "@mui/icons-material/FastRewind";
+import { Donut } from "react-dial-knob";
+import Typography from "@mui/material/Typography";
 
 const TimeLine = () => {
   const requestRef = useRef(0);
   const elemRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef(TIMELINE.START_POS);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [beats, setBeats] = useState(60);
 
   const togglePlay = () => {
     setIsPlaying((prev) => !prev);
@@ -45,6 +48,21 @@ const TimeLine = () => {
     <>
       <div ref={elemRef} id="timeLine" className="panel"></div>
       <div id="play" className="panel">
+        <Typography variant="h6" sx={{ textAlign: "center" }}>
+          Beats
+        </Typography>
+        <Donut
+          diameter={175}
+          min={0}
+          max={120}
+          step={1}
+          value={beats}
+          onValueChange={setBeats}
+          theme={{
+            donutColor: "darkred",
+          }}
+          ariaLabelledBy={"my-label"}
+        />
         <IconButton onClick={reset}>
           <FastRewindIcon sx={{ fontSize: 60 }} />
         </IconButton>
