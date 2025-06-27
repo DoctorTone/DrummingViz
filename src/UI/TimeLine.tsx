@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { TIMELINE } from "../state/Config";
+import { SCORES, TIMELINE } from "../state/Config";
 import IconButton from "@mui/material/IconButton";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
@@ -45,6 +45,7 @@ const TimeLine = () => {
   let lastTime: number;
   let elapsed: number = 0;
   let delta: number;
+  let noteIndex = 0;
 
   const togglePlay = () => {
     setIsPlaying((prev) => !prev);
@@ -56,20 +57,46 @@ const TimeLine = () => {
     elemRef.current!.style.left = `${positionRef.current}%`;
   };
 
-  const animate = (timestamp: number) => {
-    if (lastTime === undefined) {
-      lastTime = timestamp;
+  const getNextNotes = () => {
+    const currentScore = SCORES[0];
+    const nextNoteTime = currentScore[noteIndex].time;
+    const notes = [];
+    for (let i = noteIndex; i < currentScore.length; ++i) {
+      if (currentScore[i].time === nextNoteTime) {
+        notes.push(currentScore[i]);
+      } else {
+        return notes;
+      }
     }
-    delta = timestamp - lastTime;
-    elapsed += delta;
-    lastTime = timestamp;
 
-    positionRef.current += (delta / 1000) * TIMELINE.PLAY_SPEED;
+    return notes;
+  };
+
+  const animate = (timestamp: number) => {
+    // Timing
+    const timeStamp_s = timestamp / 1000;
+    if (lastTime === undefined) {
+      lastTime = timeStamp_s;
+    }
+    delta = timeStamp_s - lastTime;
+    elapsed += delta;
+    lastTime = timeStamp_s;
+
+    // Timeline animation
+    positionRef.current += delta * TIMELINE.PLAY_SPEED;
     elemRef.current!.style.left = `${positionRef.current}%`;
     if (positionRef.current >= TIMELINE.END_POS) {
       positionRef.current = TIMELINE.START_POS;
     }
 
+    // Play sounds
+    const notes = getNextNotes();
+    for (let i = 0; i < notes.length; ++i) {
+      if (elapsed >= notes[i].time) {
+        playSound(drums[notes[i].drum]);
+        ++noteIndex;
+      }
+    }
     requestRef.current = requestAnimationFrame(animate);
   };
 

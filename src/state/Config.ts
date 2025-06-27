@@ -39,19 +39,21 @@ enum DRUMS {
 }
 
 const SCORES = [
-  { time: 0, drum: DRUMS.HIHAT },
-  { time: 0, drum: DRUMS.KICK },
-  { time: 0.5, drum: DRUMS.HIHAT },
-  { time: 1, drum: DRUMS.HIHAT },
-  { time: 1, drum: DRUMS.SNARE },
-  { time: 1.5, drum: DRUMS.HIHAT },
-  { time: 2, drum: DRUMS.HIHAT },
-  { time: 2, drum: DRUMS.KICK },
-  { time: 2.5, drum: DRUMS.HIHAT },
-  { time: 3, drum: DRUMS.HIHAT },
-  { time: 3, drum: DRUMS.SNARE },
-  { time: 3.5, drum: DRUMS.HIHAT },
-  { time: 4.0, drum: DRUMS.NONE },
+  [
+    { time: 0, drum: DRUMS.HIHAT },
+    { time: 0, drum: DRUMS.KICK },
+    { time: 0.5, drum: DRUMS.HIHAT },
+    { time: 1, drum: DRUMS.HIHAT },
+    { time: 1, drum: DRUMS.SNARE },
+    { time: 1.5, drum: DRUMS.HIHAT },
+    { time: 2, drum: DRUMS.HIHAT },
+    { time: 2, drum: DRUMS.KICK },
+    { time: 2.5, drum: DRUMS.HIHAT },
+    { time: 3, drum: DRUMS.HIHAT },
+    { time: 3, drum: DRUMS.SNARE },
+    { time: 3.5, drum: DRUMS.HIHAT },
+    { time: 4.0, drum: DRUMS.NONE },
+  ],
 ];
 
 export { SCENE, TIMELINE, GROOVES, DRUMS, SCORES };
