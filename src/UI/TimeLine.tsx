@@ -22,6 +22,7 @@ import midTomSound from "../assets/sounds/midtom.wav";
 import rideSound from "../assets/sounds/ride.wav";
 import snareSound from "../assets/sounds/snare.wav";
 import upperTomSound from "../assets/sounds/uppertom.wav";
+import { DRUMS } from "../state/Config";
 
 const TimeLine = () => {
   const requestRef = useRef(0);
@@ -29,8 +30,21 @@ const TimeLine = () => {
   const positionRef = useRef(TIMELINE.START_POS);
   const [isPlaying, setIsPlaying] = useState(false);
   const [beats, setBeats] = useState(60);
+  const [drums] = useState([
+    crashSound,
+    floorTomSound,
+    hihatSound,
+    kickSound,
+    midTomSound,
+    rideSound,
+    snareSound,
+    upperTomSound,
+  ]);
   const groove = useStore((state) => state.groove);
   const setGroove = useStore((state) => state.setGroove);
+  let lastTime: number;
+  let elapsed: number = 0;
+  let delta: number;
 
   const togglePlay = () => {
     setIsPlaying((prev) => !prev);
@@ -42,12 +56,20 @@ const TimeLine = () => {
     elemRef.current!.style.left = `${positionRef.current}%`;
   };
 
-  const animate = () => {
-    positionRef.current += TIMELINE.DELTA * TIMELINE.PLAY_SPEED;
+  const animate = (timestamp: number) => {
+    if (lastTime === undefined) {
+      lastTime = timestamp;
+    }
+    delta = timestamp - lastTime;
+    elapsed += delta;
+    lastTime = timestamp;
+
+    positionRef.current += (delta / 1000) * TIMELINE.PLAY_SPEED;
     elemRef.current!.style.left = `${positionRef.current}%`;
     if (positionRef.current >= TIMELINE.END_POS) {
       positionRef.current = TIMELINE.START_POS;
     }
+
     requestRef.current = requestAnimationFrame(animate);
   };
 
@@ -57,7 +79,7 @@ const TimeLine = () => {
   };
 
   const onPlay = () => {
-    playSound(hihatSound);
+    playSound(drums[DRUMS.KICK]);
   };
 
   useEffect(() => {

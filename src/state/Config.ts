@@ -7,7 +7,7 @@ const SCENE = {
 const TIMELINE = {
   START_POS: 31,
   END_POS: 74,
-  PLAY_SPEED: 15,
+  PLAY_SPEED: 10.75,
   DELTA: 0.0167,
 };
 
@@ -26,4 +26,32 @@ const GROOVES = [
   },
 ];
 
-export { SCENE, TIMELINE, GROOVES };
+enum DRUMS {
+  NONE = -1,
+  CRASH = 0,
+  FLOOR,
+  HIHAT,
+  KICK,
+  MIDTOM,
+  RIDE,
+  SNARE,
+  UPPERTOM,
+}
+
+const SCORES = [
+  { time: 0, drum: DRUMS.HIHAT },
+  { time: 0, drum: DRUMS.KICK },
+  { time: 0.5, drum: DRUMS.HIHAT },
+  { time: 1, drum: DRUMS.HIHAT },
+  { time: 1, drum: DRUMS.SNARE },
+  { time: 1.5, drum: DRUMS.HIHAT },
+  { time: 2, drum: DRUMS.HIHAT },
+  { time: 2, drum: DRUMS.KICK },
+  { time: 2.5, drum: DRUMS.HIHAT },
+  { time: 3, drum: DRUMS.HIHAT },
+  { time: 3, drum: DRUMS.SNARE },
+  { time: 3.5, drum: DRUMS.HIHAT },
+  { time: 4.0, drum: DRUMS.NONE },
+];
+
+export { SCENE, TIMELINE, GROOVES, DRUMS, SCORES };
