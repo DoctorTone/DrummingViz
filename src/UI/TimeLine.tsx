@@ -97,6 +97,11 @@ const TimeLine = () => {
         ++noteIndex;
       }
     }
+    if (noteIndex >= SCORES[0].length) {
+      noteIndex = 0;
+      elapsed = 0;
+    }
+
     requestRef.current = requestAnimationFrame(animate);
   };
 
