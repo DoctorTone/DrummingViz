@@ -110,10 +110,6 @@ const TimeLine = () => {
     console.log("Groove changed");
   };
 
-  const onPlay = () => {
-    playSound(drums[DRUMS.KICK]);
-  };
-
   useEffect(() => {
     preloadSounds([
       crashSound,
@@ -192,9 +188,6 @@ const TimeLine = () => {
             </RadioGroup>
           </FormControl>
         </div>
-        <Button variant="contained" onClick={onPlay}>
-          Play
-        </Button>
       </div>
     </>
   );
