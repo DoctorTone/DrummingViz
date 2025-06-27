@@ -12,6 +12,16 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import useStore from "../state/store";
+import Button from "@mui/material/Button";
+import { playSound, preloadSounds } from "react-sounds";
+import crashSound from "../assets/sounds/crash.wav";
+import floorTomSound from "../assets/sounds/floortom.wav";
+import hihatSound from "../assets/sounds/hihat.wav";
+import kickSound from "../assets/sounds/kick.wav";
+import midTomSound from "../assets/sounds/midtom.wav";
+import rideSound from "../assets/sounds/ride.wav";
+import snareSound from "../assets/sounds/snare.wav";
+import upperTomSound from "../assets/sounds/uppertom.wav";
 
 const TimeLine = () => {
   const requestRef = useRef(0);
@@ -45,6 +55,25 @@ const TimeLine = () => {
     setGroove((event.target as HTMLInputElement).value);
     console.log("Groove changed");
   };
+
+  const onPlay = () => {
+    playSound(hihatSound);
+  };
+
+  useEffect(() => {
+    preloadSounds([
+      crashSound,
+      floorTomSound,
+      hihatSound,
+      kickSound,
+      midTomSound,
+      rideSound,
+      snareSound,
+      upperTomSound,
+    ])
+      .then(() => console.log("All sounds preloaded"))
+      .catch((error) => console.error("Error loading sounds", error));
+  }, []);
 
   useEffect(() => {
     if (isPlaying) {
@@ -109,6 +138,9 @@ const TimeLine = () => {
             </RadioGroup>
           </FormControl>
         </div>
+        <Button variant="contained" onClick={onPlay}>
+          Play
+        </Button>
       </div>
     </>
   );

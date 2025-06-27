@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import useStore from "../state/store";
-import { SCORES } from "../state/Config";
+import { GROOVES } from "../state/Config";
 
 const Score = () => {
   const [currentGroove, setCurrentGroove] = useState(0);
@@ -17,9 +17,9 @@ const Score = () => {
   return (
     <div id="score" className="panel">
       <Typography variant="h6" sx={{ textAlign: "center" }}>
-        {SCORES[currentGroove].title}
+        {GROOVES[currentGroove].title}
       </Typography>
-      <img src={`./images/${SCORES[currentGroove].score}`} className="w-100" />
+      <img src={`./images/${GROOVES[currentGroove].score}`} className="w-100" />
     </div>
   );
 };

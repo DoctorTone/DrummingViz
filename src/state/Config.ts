@@ -11,7 +11,7 @@ const TIMELINE = {
   DELTA: 0.0167,
 };
 
-const SCORES = [
+const GROOVES = [
   {
     title: "Groove 1",
     score: "drumScore1.png",
@@ -26,4 +26,4 @@ const SCORES = [
   },
 ];
 
-export { SCENE, TIMELINE, SCORES };
+export { SCENE, TIMELINE, GROOVES };
