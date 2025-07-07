@@ -12,7 +12,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import useStore from "../state/store";
-import Button from "@mui/material/Button";
 import { playSound, preloadSounds } from "react-sounds";
 import crashSound from "../assets/sounds/crash.wav";
 import floorTomSound from "../assets/sounds/floortom.wav";
@@ -22,7 +21,6 @@ import midTomSound from "../assets/sounds/midtom.wav";
 import rideSound from "../assets/sounds/ride.wav";
 import snareSound from "../assets/sounds/snare.wav";
 import upperTomSound from "../assets/sounds/uppertom.wav";
-import { DRUMS } from "../state/Config";
 
 const TimeLine = () => {
   const requestRef = useRef(0);
@@ -83,7 +81,8 @@ const TimeLine = () => {
     lastTime = timeStamp_s;
 
     // Timeline animation
-    positionRef.current += delta * TIMELINE.PLAY_SPEED;
+    const timeScale = TIMELINE.PLAY_SPEED * beats;
+    positionRef.current += delta * timeScale;
     elemRef.current!.style.left = `${positionRef.current}%`;
     if (positionRef.current >= TIMELINE.END_POS) {
       positionRef.current = TIMELINE.START_POS;
@@ -92,7 +91,7 @@ const TimeLine = () => {
     // Play sounds
     const notes = getNextNotes();
     for (let i = 0; i < notes.length; ++i) {
-      if (elapsed >= notes[i].time) {
+      if (elapsed >= notes[i].time * (TIMELINE.DEFAULT_BEATS / beats)) {
         playSound(drums[notes[i].drum]);
         ++noteIndex;
       }
@@ -145,8 +144,8 @@ const TimeLine = () => {
         </Typography>
         <Donut
           diameter={150}
-          min={0}
-          max={120}
+          min={15}
+          max={180}
           step={1}
           value={beats}
           onValueChange={setBeats}

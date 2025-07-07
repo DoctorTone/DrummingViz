@@ -7,8 +7,8 @@ const SCENE = {
 const TIMELINE = {
   START_POS: 31,
   END_POS: 74,
-  PLAY_SPEED: 10.75,
-  DELTA: 0.0167,
+  PLAY_SPEED: 10.75 / 60,
+  DEFAULT_BEATS: 60,
 };
 
 const GROOVES = [
