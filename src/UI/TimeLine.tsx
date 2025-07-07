@@ -44,6 +44,7 @@ const TimeLine = () => {
   let elapsed: number = 0;
   let delta: number;
   let noteIndex = 0;
+  let currentScore;
 
   const togglePlay = () => {
     setIsPlaying((prev) => !prev);
@@ -56,7 +57,8 @@ const TimeLine = () => {
   };
 
   const getNextNotes = () => {
-    const currentScore = SCORES[0];
+    const currentGroove = parseInt(groove);
+    currentScore = SCORES[currentGroove - 1];
     const nextNoteTime = currentScore[noteIndex].time;
     const notes = [];
     for (let i = noteIndex; i < currentScore.length; ++i) {
@@ -96,7 +98,7 @@ const TimeLine = () => {
         ++noteIndex;
       }
     }
-    if (noteIndex >= SCORES[0].length) {
+    if (noteIndex >= currentScore.length) {
       noteIndex = 0;
       elapsed = 0;
     }
@@ -106,7 +108,6 @@ const TimeLine = () => {
 
   const onGrooveChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGroove((event.target as HTMLInputElement).value);
-    console.log("Groove changed");
   };
 
   useEffect(() => {
