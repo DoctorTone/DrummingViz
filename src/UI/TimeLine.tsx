@@ -96,7 +96,7 @@ const TimeLine = () => {
     for (let i = 0; i < notes.length; ++i) {
       if (elapsed >= notes[i].time * (TIMELINE.DEFAULT_BEATS / beats)) {
         playSound(drums[notes[i].drum]);
-        showEffect(notes[i].drum);
+        showEffect(notes[i].drum, true);
         ++noteIndex;
       }
     }

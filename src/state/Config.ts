@@ -26,6 +26,10 @@ const GROOVES = [
   },
 ];
 
+const EFFECTS = {
+  DURATION: 150,
+};
+
 const DRUMS = {
   NONE: -1,
   CRASH: 0,
@@ -87,4 +91,4 @@ const SCORES = [
   ],
 ];
 
-export { SCENE, TIMELINE, GROOVES, DRUMS, SCORES };
+export { SCENE, TIMELINE, GROOVES, DRUMS, SCORES, EFFECTS };

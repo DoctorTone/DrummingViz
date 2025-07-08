@@ -6,7 +6,7 @@ interface DrumState {
   groove: string;
   setGroove: (groove: string) => void;
   effects: boolean[];
-  showEffect: (effect: number) => void;
+  showEffect: (effect: number, status: boolean) => void;
 }
 
 const useStore = create<DrumState>((set) => ({
@@ -15,10 +15,10 @@ const useStore = create<DrumState>((set) => ({
   effects: [false, false, false, false, false, false, false, false],
   setGroove: (newGroove) => set(() => ({ groove: newGroove })),
   setShowInfoDialog: (status) => set(() => ({ infoDialogOpen: status })),
-  showEffect: (effect) =>
+  showEffect: (effect, status) =>
     set((state) => ({
       effects: state.effects.map((value, index) =>
-        effect === index ? true : value
+        effect === index ? status : value
       ),
     })),
 }));
