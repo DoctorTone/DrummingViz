@@ -26,17 +26,17 @@ const GROOVES = [
   },
 ];
 
-enum DRUMS {
-  NONE = -1,
-  CRASH = 0,
-  FLOOR,
-  HIHAT,
-  KICK,
-  MIDTOM,
-  RIDE,
-  SNARE,
-  UPPERTOM,
-}
+const DRUMS = {
+  NONE: -1,
+  CRASH: 0,
+  FLOOR: 1,
+  HIHAT: 2,
+  KICK: 3,
+  MIDTOM: 4,
+  RIDE: 5,
+  SNARE: 6,
+  UPPERTOM: 7,
+};
 
 const SCORES = [
   [

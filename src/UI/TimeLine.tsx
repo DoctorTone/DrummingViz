@@ -40,6 +40,7 @@ const TimeLine = () => {
   ]);
   const groove = useStore((state) => state.groove);
   const setGroove = useStore((state) => state.setGroove);
+  const showEffect = useStore((state) => state.showEffect);
   let lastTime: number;
   let elapsed: number = 0;
   let delta: number;
@@ -95,6 +96,7 @@ const TimeLine = () => {
     for (let i = 0; i < notes.length; ++i) {
       if (elapsed >= notes[i].time * (TIMELINE.DEFAULT_BEATS / beats)) {
         playSound(drums[notes[i].drum]);
+        showEffect(notes[i].drum);
         ++noteIndex;
       }
     }
