@@ -5,6 +5,8 @@ interface DrumState {
   setShowInfoDialog: (status: boolean) => void;
   groove: string;
   setGroove: (groove: string) => void;
+  hihatEffect: boolean;
+  showHiHatEffect: (status: boolean) => void;
 }
 
 const useStore = create<DrumState>((set) => ({
@@ -12,6 +14,8 @@ const useStore = create<DrumState>((set) => ({
   groove: "1",
   setGroove: (newGroove) => set(() => ({ groove: newGroove })),
   setShowInfoDialog: (status) => set(() => ({ infoDialogOpen: status })),
+  hihatEffect: true,
+  showHiHatEffect: (status) => set(() => ({ hihatEffect: status })),
 }));
 
 export default useStore;

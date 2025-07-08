@@ -1,11 +1,12 @@
 import { Canvas } from "@react-three/fiber";
-import { Box, Sky, Stage, OrbitControls } from "@react-three/drei";
+import { Sky, Stage, OrbitControls } from "@react-three/drei";
 import { SCENE } from "./state/Config";
 import Info from "./UI/Info";
 import { DrumKit2 } from "./models/DrumKit2";
 import { Suspense } from "react";
 import Score from "./UI/Score";
 import TimeLine from "./UI/TimeLine";
+import Effects from "./components/Effects";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Stage adjustCamera={false} shadows="contact" environment="city">
           <Suspense fallback={null}>
             <DrumKit2 rotation-y={Math.PI} />
+            <Effects />
           </Suspense>
         </Stage>
         <OrbitControls
