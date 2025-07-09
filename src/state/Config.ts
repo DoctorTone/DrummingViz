@@ -14,15 +14,15 @@ const TIMELINE = {
 const GROOVES = [
   {
     title: "Groove 1",
-    score: "drumScore1.png",
+    score: "NewGroove1.png",
   },
   {
     title: "Groove 2",
-    score: "drumScore2.png",
+    score: "NewGroove2.png",
   },
   {
     title: "Groove 3",
-    score: "drumScore3.png",
+    score: "NewGroove3.png",
   },
 ];
 
