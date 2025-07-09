@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import Score from "./UI/Score";
 import TimeLine from "./UI/TimeLine";
 import Effects from "./components/Effects";
+import Intro from "./components/Intro";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         />
         <Stage adjustCamera={false} shadows="contact" environment="city">
           <Suspense fallback={null}>
+            <Intro />
             <DrumKit2 rotation-y={Math.PI} />
             <Effects />
           </Suspense>
