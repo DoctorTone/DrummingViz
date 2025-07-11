@@ -22,7 +22,6 @@ function App() {
         />
         <Stage adjustCamera={false} shadows="contact" environment="city">
           <Suspense fallback={null}>
-            <IntroSound />
             <DrumKit2 rotation-y={Math.PI} />
             <Effects />
           </Suspense>
@@ -37,6 +36,7 @@ function App() {
         />
       </Canvas>
       <Intro />
+      <IntroSound />
       <Info />
       <Score />
       <TimeLine />
