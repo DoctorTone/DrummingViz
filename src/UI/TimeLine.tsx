@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { SCORES, TIMELINE } from "../state/Config";
+import { SCORES, TIMELINE, DRUMS } from "../state/Config";
 import IconButton from "@mui/material/IconButton";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
@@ -51,6 +51,12 @@ const TimeLine = () => {
     setIsPlaying((prev) => !prev);
   };
 
+  const playDrum = (drum: number) => {
+    if (drum === DRUMS.NONE) return;
+
+    playSound(drums[drum]);
+  };
+
   const reset = () => {
     setIsPlaying(false);
     positionRef.current = TIMELINE.START_POS;
@@ -95,7 +101,7 @@ const TimeLine = () => {
     const notes = getNextNotes();
     for (let i = 0; i < notes.length; ++i) {
       if (elapsed >= notes[i].time * (TIMELINE.DEFAULT_BEATS / beats)) {
-        playSound(drums[notes[i].drum]);
+        playDrum(notes[i].drum);
         showEffect(notes[i].drum, true);
         ++noteIndex;
       }
