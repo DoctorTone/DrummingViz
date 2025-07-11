@@ -7,7 +7,8 @@ import { Suspense } from "react";
 import Score from "./UI/Score";
 import TimeLine from "./UI/TimeLine";
 import Effects from "./components/Effects";
-import Intro from "./components/Intro";
+import IntroSound from "./components/IntroSound";
+import Intro from "./UI/Intro";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         />
         <Stage adjustCamera={false} shadows="contact" environment="city">
           <Suspense fallback={null}>
-            <Intro />
+            <IntroSound />
             <DrumKit2 rotation-y={Math.PI} />
             <Effects />
           </Suspense>
@@ -35,6 +36,7 @@ function App() {
           maxPolarAngle={Math.PI / 2}
         />
       </Canvas>
+      <Intro />
       <Info />
       <Score />
       <TimeLine />

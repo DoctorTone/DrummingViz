@@ -6,6 +6,7 @@ import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import type { GLTF } from "three-stdlib";
+import useStore from "../state/store";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -143,7 +144,8 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
     "./models/drumKit2.glb"
   ) as unknown as GLTFResult;
 
-  const animating = useRef(true);
+  const animateDrums = useStore((state) => state.animateDrums);
+  const setAnimateDrums = useStore((state) => state.setAnimateDrums);
   const groupRef = useRef<THREE.Group>(null);
 
   // DEBUG
@@ -156,12 +158,12 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
   useFrame((_, delta) => {
     if (!groupRef.current) return;
 
-    if (!animating.current) return;
+    if (!animateDrums) return;
 
     groupRef.current.rotation.y += delta * 1.5;
     if (groupRef.current.rotation.y >= Math.PI * 2) {
       groupRef.current.rotation.y = 0;
-      animating.current = false;
+      setAnimateDrums(false);
     }
   });
 

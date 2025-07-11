@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import introsound from "../assets/sounds/drumIntro.mp3";
 import { playSound } from "react-sounds";
 
-const Intro = () => {
+const IntroSound = () => {
   useEffect(() => {
     playSound(introsound);
   }, []);
@@ -10,4 +10,4 @@ const Intro = () => {
   return null;
 };
 
-export default Intro;
+export default IntroSound;
