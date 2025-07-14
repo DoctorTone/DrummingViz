@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Dialog from "@mui/material/Dialog";
+import Box from "@mui/material/Box";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
@@ -23,15 +24,36 @@ const Intro = () => {
         open={dialogOpen}
         maxWidth={"md"}
         fullWidth={true}
+        slotProps={{
+          paper: {
+            sx: {
+              opacity: 0.65,
+              backgroundColor: "black", // your custom color
+              color: "white",
+              height: "50%",
+              borderRadius: "30px",
+            },
+          },
+        }}
       >
-        <DialogTitle>Welcome to Drum Viz!</DialogTitle>
+        <DialogTitle variant="h4" sx={{ textAlign: "center" }}>
+          Welcome to Drum Viz!
+        </DialogTitle>
         <DialogContent dividers>
-          <Typography variant="h6">
-            Select the groove and speed you want to play and let's rock!
+          <Box sx={{ textAlign: "center" }}>
+            <img className="w-25" src="./images/drums-icon.jpg" />
+          </Box>
+          <Typography variant="h6" sx={{ textAlign: "center" }}>
+            Select the groove, select the speed and start playing!
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" onClick={handleClose}>
+          <Button
+            sx={{ marginRight: "2%" }}
+            variant="contained"
+            color="warning"
+            onClick={handleClose}
+          >
             Let's Rock!
           </Button>
         </DialogActions>
