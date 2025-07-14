@@ -26,6 +26,7 @@ const TimeLine = () => {
   const requestRef = useRef(0);
   const elemRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef(TIMELINE.START_POS);
+  const playingRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [beats, setBeats] = useState(60);
   const [drums] = useState([
@@ -86,29 +87,34 @@ const TimeLine = () => {
       lastTime = timeStamp_s;
     }
     delta = timeStamp_s - lastTime;
-    elapsed += delta;
     lastTime = timeStamp_s;
 
-    // Timeline animation
-    const timeScale = TIMELINE.PLAY_SPEED * beats;
-    positionRef.current += delta * timeScale;
-    elemRef.current!.style.left = `${positionRef.current}%`;
-    if (positionRef.current >= TIMELINE.END_POS) {
-      positionRef.current = TIMELINE.START_POS;
-    }
+    // DEBUG
+    console.log("Playing = ", playingRef.current);
 
-    // Play sounds
-    const notes = getNextNotes();
-    for (let i = 0; i < notes.length; ++i) {
-      if (elapsed >= notes[i].time * (TIMELINE.DEFAULT_BEATS / beats)) {
-        playDrum(notes[i].drum);
-        showEffect(notes[i].drum, true);
-        ++noteIndex;
+    if (playingRef.current) {
+      elapsed += delta;
+      // Timeline animation
+      const timeScale = TIMELINE.PLAY_SPEED * beats;
+      positionRef.current += delta * timeScale;
+      elemRef.current!.style.left = `${positionRef.current}%`;
+      if (positionRef.current >= TIMELINE.END_POS) {
+        positionRef.current = TIMELINE.START_POS;
       }
-    }
-    if (noteIndex >= currentScore.length) {
-      noteIndex = 0;
-      elapsed = 0;
+
+      // Play sounds
+      const notes = getNextNotes();
+      for (let i = 0; i < notes.length; ++i) {
+        if (elapsed >= notes[i].time * (TIMELINE.DEFAULT_BEATS / beats)) {
+          playDrum(notes[i].drum);
+          showEffect(notes[i].drum, true);
+          ++noteIndex;
+        }
+      }
+      if (noteIndex >= currentScore.length) {
+        noteIndex = 0;
+        elapsed = 0;
+      }
     }
 
     requestRef.current = requestAnimationFrame(animate);
@@ -134,14 +140,13 @@ const TimeLine = () => {
   }, []);
 
   useEffect(() => {
-    if (isPlaying) {
+    playingRef.current = isPlaying;
+    if (isPlaying && !requestRef.current) {
       requestRef.current = requestAnimationFrame(animate);
-    } else {
-      cancelAnimationFrame(requestRef.current);
     }
 
     // Clean up on unmount
-    return () => cancelAnimationFrame(requestRef.current);
+    // return () => cancelAnimationFrame(requestRef.current);
   }, [isPlaying]);
 
   return (

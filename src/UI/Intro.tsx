@@ -28,7 +28,7 @@ const Intro = () => {
           paper: {
             sx: {
               opacity: 0.65,
-              backgroundColor: "black", // your custom color
+              backgroundColor: "black",
               color: "white",
               height: "50%",
               borderRadius: "30px",
