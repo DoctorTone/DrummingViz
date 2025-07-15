@@ -29,6 +29,7 @@ const TimeLine = () => {
   const playingRef = useRef(false);
   const elapsedRef = useRef(0);
   const noteIndexRef = useRef(0);
+  const grooveRef = useRef("1");
   const [isPlaying, setIsPlaying] = useState(false);
   const [beats, setBeats] = useState(60);
   const [drums] = useState([
@@ -67,7 +68,7 @@ const TimeLine = () => {
   };
 
   const getNextNotes = () => {
-    const currentGroove = parseInt(groove);
+    const currentGroove = parseInt(grooveRef.current);
     currentScore = SCORES[currentGroove - 1];
     const nextNoteTime = currentScore[noteIndexRef.current].time;
     const notes = [];
@@ -90,9 +91,6 @@ const TimeLine = () => {
     }
     delta = timeStamp_s - lastTime;
     lastTime = timeStamp_s;
-
-    // DEBUG
-    console.log("note index = ", noteIndexRef.current);
 
     if (playingRef.current) {
       elapsedRef.current += delta;
@@ -126,7 +124,9 @@ const TimeLine = () => {
   };
 
   const onGrooveChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setGroove((event.target as HTMLInputElement).value);
+    const currentGroove = (event.target as HTMLInputElement).value;
+    grooveRef.current = currentGroove;
+    setGroove(currentGroove);
   };
 
   useEffect(() => {
