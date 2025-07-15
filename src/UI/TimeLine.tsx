@@ -27,6 +27,8 @@ const TimeLine = () => {
   const elemRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef(TIMELINE.START_POS);
   const playingRef = useRef(false);
+  const elapsedRef = useRef(0);
+  const noteIndexRef = useRef(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [beats, setBeats] = useState(60);
   const [drums] = useState([
@@ -43,9 +45,7 @@ const TimeLine = () => {
   const setGroove = useStore((state) => state.setGroove);
   const showEffect = useStore((state) => state.showEffect);
   let lastTime: number;
-  let elapsed: number = 0;
   let delta: number;
-  let noteIndex = 0;
   let currentScore;
 
   const togglePlay = () => {
@@ -62,14 +62,16 @@ const TimeLine = () => {
     setIsPlaying(false);
     positionRef.current = TIMELINE.START_POS;
     elemRef.current!.style.left = `${positionRef.current}%`;
+    elapsedRef.current = 0;
+    noteIndexRef.current = 0;
   };
 
   const getNextNotes = () => {
     const currentGroove = parseInt(groove);
     currentScore = SCORES[currentGroove - 1];
-    const nextNoteTime = currentScore[noteIndex].time;
+    const nextNoteTime = currentScore[noteIndexRef.current].time;
     const notes = [];
-    for (let i = noteIndex; i < currentScore.length; ++i) {
+    for (let i = noteIndexRef.current; i < currentScore.length; ++i) {
       if (currentScore[i].time === nextNoteTime) {
         notes.push(currentScore[i]);
       } else {
@@ -90,10 +92,10 @@ const TimeLine = () => {
     lastTime = timeStamp_s;
 
     // DEBUG
-    console.log("Playing = ", playingRef.current);
+    console.log("note index = ", noteIndexRef.current);
 
     if (playingRef.current) {
-      elapsed += delta;
+      elapsedRef.current += delta;
       // Timeline animation
       const timeScale = TIMELINE.PLAY_SPEED * beats;
       positionRef.current += delta * timeScale;
@@ -105,15 +107,18 @@ const TimeLine = () => {
       // Play sounds
       const notes = getNextNotes();
       for (let i = 0; i < notes.length; ++i) {
-        if (elapsed >= notes[i].time * (TIMELINE.DEFAULT_BEATS / beats)) {
+        if (
+          elapsedRef.current >=
+          notes[i].time * (TIMELINE.DEFAULT_BEATS / beats)
+        ) {
           playDrum(notes[i].drum);
           showEffect(notes[i].drum, true);
-          ++noteIndex;
+          ++noteIndexRef.current;
         }
       }
-      if (noteIndex >= currentScore.length) {
-        noteIndex = 0;
-        elapsed = 0;
+      if (noteIndexRef.current >= currentScore.length) {
+        noteIndexRef.current = 0;
+        elapsedRef.current = 0;
       }
     }
 
