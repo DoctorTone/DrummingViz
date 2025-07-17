@@ -9,6 +9,8 @@ interface DrumState {
   showEffect: (effect: number, status: boolean) => void;
   animateDrums: boolean;
   setAnimateDrums: (status: boolean) => void;
+  hitState: string;
+  setHitState: (drum: string) => void;
 }
 
 const useStore = create<DrumState>((set) => ({
@@ -25,6 +27,8 @@ const useStore = create<DrumState>((set) => ({
     })),
   animateDrums: false,
   setAnimateDrums: (status) => set(() => ({ animateDrums: status })),
+  hitState: "",
+  setHitState: (drum) => set(() => ({ hitState: drum })),
 }));
 
 export default useStore;

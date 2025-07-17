@@ -146,6 +146,7 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
 
   const animateDrums = useStore((state) => state.animateDrums);
   const setAnimateDrums = useStore((state) => state.setAnimateDrums);
+  const setHitState = useStore((state) => state.setHitState);
   const groupRef = useRef<THREE.Group>(null);
 
   // DEBUG
@@ -182,6 +183,8 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
             material={materials.Black}
           />
           <mesh
+            onPointerDown={() => setHitState("Ride")}
+            onPointerUp={() => setHitState("")}
             castShadow
             receiveShadow
             geometry={nodes.Circle003_Metal_0.geometry}
