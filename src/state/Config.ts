@@ -8,7 +8,7 @@ const TIMELINE = {
   START_POS: 31,
   END_POS: 74,
   PLAY_SPEED: 10.75 / 60,
-  DEFAULT_BEATS: 60,
+  DEFAULT_BEATS_SECOND: 60,
 };
 
 const GROOVES = [

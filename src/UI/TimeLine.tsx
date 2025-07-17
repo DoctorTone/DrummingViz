@@ -25,13 +25,15 @@ import upperTomSound from "../assets/sounds/uppertom.wav";
 const TimeLine = () => {
   const requestRef = useRef(0);
   const elemRef = useRef<HTMLDivElement>(null);
-  const positionRef = useRef(TIMELINE.START_POS);
+  const positionRef = useRef(0);
   const playingRef = useRef(false);
   const elapsedRef = useRef(0);
   const noteIndexRef = useRef(0);
   const grooveRef = useRef("1");
+  const interactionRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [beats, setBeats] = useState(60);
+  const beatsRef = useRef(60);
   const [drums] = useState([
     crashSound,
     floorTomSound,
@@ -57,6 +59,16 @@ const TimeLine = () => {
     if (drum === DRUMS.NONE) return;
 
     playSound(drums[drum]);
+  };
+
+  const onBeatsChange = (value: number) => {
+    setBeats(value);
+
+    beatsRef.current = value;
+  };
+
+  const onInteracting = (isInteracting: boolean) => {
+    interactionRef.current = isInteracting;
   };
 
   const reset = () => {
@@ -95,19 +107,23 @@ const TimeLine = () => {
     if (playingRef.current) {
       elapsedRef.current += delta;
       // Timeline animation
-      const timeScale = TIMELINE.PLAY_SPEED * beats;
+      const timeScale = beatsRef.current / 60;
       positionRef.current += delta * timeScale;
-      elemRef.current!.style.left = `${positionRef.current}%`;
-      if (positionRef.current >= TIMELINE.END_POS) {
-        positionRef.current = TIMELINE.START_POS;
+
+      let percent = positionRef.current / 4;
+      if (percent >= 1) {
+        percent = 0;
       }
+      elemRef.current!.style.left = `${
+        TIMELINE.START_POS + (TIMELINE.END_POS - TIMELINE.START_POS) * percent
+      }%`;
 
       // Play sounds
       const notes = getNextNotes();
       for (let i = 0; i < notes.length; ++i) {
         if (
           elapsedRef.current >=
-          notes[i].time * (TIMELINE.DEFAULT_BEATS / beats)
+          notes[i].time * (TIMELINE.DEFAULT_BEATS_SECOND / beatsRef.current)
         ) {
           playDrum(notes[i].drum);
           showEffect(notes[i].drum, true);
@@ -117,6 +133,7 @@ const TimeLine = () => {
       if (noteIndexRef.current >= currentScore.length) {
         noteIndexRef.current = 0;
         elapsedRef.current = 0;
+        positionRef.current = 0;
       }
     }
 
@@ -167,7 +184,8 @@ const TimeLine = () => {
           max={180}
           step={1}
           value={beats}
-          onValueChange={setBeats}
+          onValueChange={onBeatsChange}
+          onInteractionChange={onInteracting}
           theme={{
             donutColor: "darkred",
           }}
