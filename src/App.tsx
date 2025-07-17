@@ -9,6 +9,7 @@ import TimeLine from "./UI/TimeLine";
 import Effects from "./components/Effects";
 import IntroSound from "./components/IntroSound";
 import Intro from "./UI/Intro";
+import FreePlay from "./components/FreePlay";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
       <Info />
       <Score />
       <TimeLine />
+      <FreePlay />
     </>
   );
 }
