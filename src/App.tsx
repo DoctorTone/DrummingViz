@@ -35,8 +35,8 @@ function App() {
           maxPolarAngle={Math.PI / 2}
         />
       </Canvas>
-      {/* <Intro />
-      <IntroSound /> */}
+      <Intro />
+      <IntroSound />
       <Info />
       <Score />
       <TimeLine />
