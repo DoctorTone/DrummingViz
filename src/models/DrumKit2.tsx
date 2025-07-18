@@ -197,14 +197,14 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
           scale={87.19}
         >
           <mesh
-            onPointerDown={() => setHitState("Crash")}
-            onPointerUp={() => setHitState("")}
             castShadow
             receiveShadow
             geometry={nodes.Circle005_Black_0.geometry}
             material={materials.Black}
           />
           <mesh
+            onPointerDown={() => setHitState("Crash")}
+            onPointerUp={() => setHitState("")}
             castShadow
             receiveShadow
             geometry={nodes.Circle005_Metal_0.geometry}

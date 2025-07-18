@@ -25,6 +25,10 @@ const FreePlay = () => {
     if (!freePlay) return;
 
     switch (hitState) {
+      case "Crash":
+        playSound(SOUNDS[DRUMS.CRASH]);
+        break;
+
       case "Ride":
         playSound(SOUNDS[DRUMS.RIDE]);
         break;
