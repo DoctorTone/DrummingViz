@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
@@ -8,11 +8,12 @@ import { SOUNDS } from "../state/Sounds";
 import { DRUMS } from "../state/Config";
 
 const FreePlay = () => {
-  const [freePlay, setFreePlay] = useState(false);
   const hitState = useStore((state) => state.hitState);
+  const freePlay = useStore((state) => state.freePlay);
+  const toggleFreePlay = useStore((state) => state.toggleFreePlay);
 
-  const toggleFreePlay = () => {
-    setFreePlay((play) => !play);
+  const toggleFreePlayMode = () => {
+    toggleFreePlay();
   };
 
   useEffect(() => {
@@ -67,7 +68,7 @@ const FreePlay = () => {
       <div id="freePlay" className="panel">
         <FormGroup>
           <FormControlLabel
-            control={<Switch onChange={toggleFreePlay} />}
+            control={<Switch onChange={toggleFreePlayMode} />}
             label="Free Play"
           />
         </FormGroup>

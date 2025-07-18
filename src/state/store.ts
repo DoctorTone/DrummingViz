@@ -11,6 +11,8 @@ interface DrumState {
   setAnimateDrums: (status: boolean) => void;
   hitState: string;
   setHitState: (drum: string) => void;
+  freePlay: boolean;
+  toggleFreePlay: () => void;
 }
 
 const useStore = create<DrumState>((set) => ({
@@ -29,6 +31,8 @@ const useStore = create<DrumState>((set) => ({
   setAnimateDrums: (status) => set(() => ({ animateDrums: status })),
   hitState: "",
   setHitState: (drum) => set(() => ({ hitState: drum })),
+  freePlay: false,
+  toggleFreePlay: () => set((state) => ({ freePlay: !state.freePlay })),
 }));
 
 export default useStore;
