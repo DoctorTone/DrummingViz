@@ -3,8 +3,9 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import useStore from "../state/store";
-import rideSound from "../assets/sounds/ride.wav";
-import { playSound } from "react-sounds";
+import { playSound, preloadSounds } from "react-sounds";
+import { SOUNDS } from "../state/Sounds";
+import { DRUMS } from "../state/Config";
 
 const FreePlay = () => {
   const [freePlay, setFreePlay] = useState(false);
@@ -15,11 +16,17 @@ const FreePlay = () => {
   };
 
   useEffect(() => {
+    preloadSounds(SOUNDS)
+      .then(() => console.log("All sounds preloaded"))
+      .catch((error) => console.error("Error loading sounds", error));
+  }, []);
+
+  useEffect(() => {
     if (!freePlay) return;
 
     switch (hitState) {
       case "Ride":
-        playSound(rideSound);
+        playSound(SOUNDS[DRUMS.RIDE]);
         break;
 
       default:

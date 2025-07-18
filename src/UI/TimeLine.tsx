@@ -13,14 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import useStore from "../state/store";
 import { playSound, preloadSounds } from "react-sounds";
-import crashSound from "../assets/sounds/crash.wav";
-import floorTomSound from "../assets/sounds/floortom.wav";
-import hihatSound from "../assets/sounds/hihat.wav";
-import kickSound from "../assets/sounds/kick.wav";
-import midTomSound from "../assets/sounds/midtom.wav";
-import rideSound from "../assets/sounds/ride.wav";
-import snareSound from "../assets/sounds/snare.wav";
-import upperTomSound from "../assets/sounds/uppertom.wav";
+import { SOUNDS } from "../state/Sounds";
 
 const TimeLine = () => {
   const requestRef = useRef(0);
@@ -34,16 +27,7 @@ const TimeLine = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [beats, setBeats] = useState(60);
   const beatsRef = useRef(60);
-  const [drums] = useState([
-    crashSound,
-    floorTomSound,
-    hihatSound,
-    kickSound,
-    midTomSound,
-    rideSound,
-    snareSound,
-    upperTomSound,
-  ]);
+  const [drums] = useState(SOUNDS);
   const groove = useStore((state) => state.groove);
   const setGroove = useStore((state) => state.setGroove);
   const showEffect = useStore((state) => state.showEffect);
@@ -147,16 +131,7 @@ const TimeLine = () => {
   };
 
   useEffect(() => {
-    preloadSounds([
-      crashSound,
-      floorTomSound,
-      hihatSound,
-      kickSound,
-      midTomSound,
-      rideSound,
-      snareSound,
-      upperTomSound,
-    ])
+    preloadSounds(SOUNDS)
       .then(() => console.log("All sounds preloaded"))
       .catch((error) => console.error("Error loading sounds", error));
   }, []);
