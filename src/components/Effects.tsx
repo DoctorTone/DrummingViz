@@ -31,17 +31,17 @@ const Effects = () => {
     <>
       {effects[DRUMS.HIHAT] && (
         <Sphere scale={0.04} position={[-1.1, 0.15, 0.3]}>
-          <meshStandardMaterial color="red" />
+          <meshStandardMaterial color="#c465e0" />
         </Sphere>
       )}
       {effects[DRUMS.SNARE] && (
         <Sphere scale={0.04} position={[-0.6, -0.175, 0.45]}>
-          <meshStandardMaterial color="red" />
+          <meshStandardMaterial color="#c465e0" />
         </Sphere>
       )}
       {effects[DRUMS.KICK] && (
         <Sphere scale={0.04} position={[0, -0.9, 0.25]}>
-          <meshStandardMaterial color="red" />
+          <meshStandardMaterial color="#c465e0" />
         </Sphere>
       )}
     </>

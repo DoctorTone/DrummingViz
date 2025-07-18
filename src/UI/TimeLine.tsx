@@ -59,8 +59,8 @@ const TimeLine = () => {
 
   const reset = () => {
     setIsPlaying(false);
-    positionRef.current = TIMELINE.START_POS;
-    elemRef.current!.style.left = `${positionRef.current}%`;
+    positionRef.current = 0;
+    elemRef.current!.style.left = `${TIMELINE.START_POS}%`;
     elapsedRef.current = 0;
     noteIndexRef.current = 0;
   };
@@ -92,6 +92,7 @@ const TimeLine = () => {
 
     if (playingRef.current) {
       elapsedRef.current += delta;
+
       // Timeline animation
       const timeScale = beatsRef.current / 60;
       positionRef.current += delta * timeScale;
