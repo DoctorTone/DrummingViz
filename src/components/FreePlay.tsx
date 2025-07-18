@@ -29,8 +29,32 @@ const FreePlay = () => {
         playSound(SOUNDS[DRUMS.CRASH]);
         break;
 
+      case "Floor":
+        playSound(SOUNDS[DRUMS.FLOOR]);
+        break;
+
+      case "Hat":
+        playSound(SOUNDS[DRUMS.HIHAT]);
+        break;
+
+      case "Kick":
+        playSound(SOUNDS[DRUMS.KICK]);
+        break;
+
+      case "Mid":
+        playSound(SOUNDS[DRUMS.MIDTOM]);
+        break;
+
       case "Ride":
         playSound(SOUNDS[DRUMS.RIDE]);
+        break;
+
+      case "Snare":
+        playSound(SOUNDS[DRUMS.SNARE]);
+        break;
+
+      case "Upper":
+        playSound(SOUNDS[DRUMS.UPPERTOM]);
         break;
 
       default:

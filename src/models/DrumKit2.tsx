@@ -176,6 +176,7 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
           rotation={[-1.687, 0.154, 0.737]}
           scale={100}
         >
+          {/* Ride Cymbal */}
           <mesh
             castShadow
             receiveShadow
@@ -196,6 +197,7 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
           rotation={[-1.952, -0.358, -1.077]}
           scale={87.19}
         >
+          {/* Crash Cymbal */}
           <mesh
             castShadow
             receiveShadow
@@ -216,19 +218,26 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
           rotation={[-1.937, 0.026, 0.01]}
           scale={98.452}
         >
+          {/* Mid Tom */}
           <mesh
+            onPointerDown={() => setHitState("Mid")}
+            onPointerUp={() => setHitState("")}
             castShadow
             receiveShadow
             geometry={nodes.Cylinder_Black_Glossy001_0.geometry}
             material={materials["Black_Glossy.001"]}
           />
           <mesh
+            onPointerDown={() => setHitState("Mid")}
+            onPointerUp={() => setHitState("")}
             castShadow
             receiveShadow
             geometry={nodes.Cylinder_Black_Glossy_0.geometry}
             material={materials.Black_Glossy}
           />
           <mesh
+            onPointerDown={() => setHitState("Mid")}
+            onPointerUp={() => setHitState("")}
             castShadow
             receiveShadow
             geometry={nodes.Cylinder_Black_transp_0.geometry}
@@ -276,19 +285,26 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
           rotation={[Math.PI, 0, 0]}
           scale={100}
         >
+          {/* Kick Drum */}
           <mesh
+            onPointerDown={() => setHitState("Kick")}
+            onPointerUp={() => setHitState("")}
             castShadow
             receiveShadow
             geometry={nodes.Cylinder002_Black_Glossy001_0.geometry}
             material={materials["Black_Glossy.001"]}
           />
           <mesh
+            onPointerDown={() => setHitState("Kick")}
+            onPointerUp={() => setHitState("")}
             castShadow
             receiveShadow
             geometry={nodes.Cylinder002_Black_Glossy_0.geometry}
             material={materials.Black_Glossy}
           />
           <mesh
+            onPointerDown={() => setHitState("Kick")}
+            onPointerUp={() => setHitState("")}
             castShadow
             receiveShadow
             geometry={nodes.Cylinder002_Black_transp_0.geometry}
@@ -312,19 +328,26 @@ export function DrumKit2(props: JSX.IntrinsicElements["group"]) {
           rotation={[-1.613, 0, 0]}
           scale={[109.274, 109.274, 84.339]}
         >
+          {/* Snare */}
           <mesh
+            onPointerDown={() => setHitState("Snare")}
+            onPointerUp={() => setHitState("")}
             castShadow
             receiveShadow
             geometry={nodes.Cylinder003_Black_Glossy001_0.geometry}
             material={materials["Black_Glossy.001"]}
           />
           <mesh
+            onPointerDown={() => setHitState("Snare")}
+            onPointerUp={() => setHitState("")}
             castShadow
             receiveShadow
             geometry={nodes.Cylinder003_Black_Glossy_0.geometry}
             material={materials.Black_Glossy}
           />
           <mesh
+            onPointerDown={() => setHitState("Snare")}
+            onPointerUp={() => setHitState("")}
             castShadow
             receiveShadow
             geometry={nodes.Cylinder003_Black_transp_0.geometry}
