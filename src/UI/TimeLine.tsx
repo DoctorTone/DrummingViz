@@ -14,6 +14,7 @@ import FormLabel from "@mui/material/FormLabel";
 import useStore from "../state/store";
 import { playSound, preloadSounds } from "react-sounds";
 import { SOUNDS } from "../state/Sounds";
+import Box from "@mui/material/Box";
 
 const TimeLine = () => {
   const requestRef = useRef(0);
@@ -31,6 +32,7 @@ const TimeLine = () => {
   const groove = useStore((state) => state.groove);
   const setGroove = useStore((state) => state.setGroove);
   const showEffect = useStore((state) => state.showEffect);
+  const freePlay = useStore((state) => state.freePlay);
   let lastTime: number;
   let delta: number;
   let currentScore;
@@ -166,17 +168,21 @@ const TimeLine = () => {
           }}
           ariaLabelledBy={"my-label"}
         />
-        <IconButton onClick={reset}>
-          <FastRewindIcon sx={{ fontSize: 60 }} />
-        </IconButton>
-        {isPlaying ? (
-          <IconButton onClick={togglePlay}>
-            <PauseCircleOutlineIcon sx={{ fontSize: 70 }} />
-          </IconButton>
-        ) : (
-          <IconButton onClick={togglePlay}>
-            <PlayCircleOutlineIcon sx={{ fontSize: 70 }} />
-          </IconButton>
+        {!freePlay && (
+          <Box>
+            <IconButton onClick={reset}>
+              <FastRewindIcon sx={{ fontSize: 60 }} />
+            </IconButton>
+            {isPlaying ? (
+              <IconButton onClick={togglePlay}>
+                <PauseCircleOutlineIcon sx={{ fontSize: 70 }} />
+              </IconButton>
+            ) : (
+              <IconButton onClick={togglePlay}>
+                <PlayCircleOutlineIcon sx={{ fontSize: 70 }} />
+              </IconButton>
+            )}
+          </Box>
         )}
         <div>
           <FormControl>
