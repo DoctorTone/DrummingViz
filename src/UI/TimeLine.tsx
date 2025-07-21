@@ -143,62 +143,60 @@ const TimeLine = () => {
 
   return (
     <>
-      <div ref={elemRef} id="timeLine" className="panel"></div>
-      <div id="play" className="panel">
-        <Typography variant="h6" sx={{ textAlign: "center" }}>
-          Beats
-        </Typography>
-        <Donut
-          diameter={150}
-          min={15}
-          max={180}
-          step={1}
-          value={beats}
-          onValueChange={onBeatsChange}
-          onInteractionChange={onInteracting}
-          theme={{
-            donutColor: "darkred",
-          }}
-          ariaLabelledBy={"my-label"}
-        />
-        {!freePlay && (
-          <Box>
-            <IconButton onClick={reset}>
-              <FastRewindIcon sx={{ fontSize: 60 }} />
+      {!freePlay && <div ref={elemRef} id="timeLine" className="panel"></div>}
+      {!freePlay && (
+        <div id="play" className="panel">
+          <Typography variant="h6" sx={{ textAlign: "center" }}>
+            Beats
+          </Typography>
+          <Donut
+            diameter={150}
+            min={15}
+            max={180}
+            step={1}
+            value={beats}
+            onValueChange={onBeatsChange}
+            onInteractionChange={onInteracting}
+            theme={{
+              donutColor: "darkred",
+            }}
+            ariaLabelledBy={"my-label"}
+          />
+          <IconButton onClick={reset}>
+            <FastRewindIcon sx={{ fontSize: 60 }} />
+          </IconButton>
+          {isPlaying ? (
+            <IconButton onClick={togglePlay}>
+              <PauseCircleOutlineIcon sx={{ fontSize: 70 }} />
             </IconButton>
-            {isPlaying ? (
-              <IconButton onClick={togglePlay}>
-                <PauseCircleOutlineIcon sx={{ fontSize: 70 }} />
-              </IconButton>
-            ) : (
-              <IconButton onClick={togglePlay}>
-                <PlayCircleOutlineIcon sx={{ fontSize: 70 }} />
-              </IconButton>
-            )}
-          </Box>
-        )}
-        <div>
-          <FormControl>
-            <FormLabel
-              id="grooves"
-              sx={{ textAlign: "center", color: "black" }}
-            >
-              Groove
-            </FormLabel>
-            <RadioGroup
-              row
-              aria-labelledby="grooves"
-              value={groove}
-              onChange={onGrooveChange}
-              name="radio-buttons-grooves"
-            >
-              <FormControlLabel value="1" control={<Radio />} label="1" />
-              <FormControlLabel value="2" control={<Radio />} label="2" />
-              <FormControlLabel value="3" control={<Radio />} label="3" />
-            </RadioGroup>
-          </FormControl>
+          ) : (
+            <IconButton onClick={togglePlay}>
+              <PlayCircleOutlineIcon sx={{ fontSize: 70 }} />
+            </IconButton>
+          )}
+          <div>
+            <FormControl>
+              <FormLabel
+                id="grooves"
+                sx={{ textAlign: "center", color: "black" }}
+              >
+                Groove
+              </FormLabel>
+              <RadioGroup
+                row
+                aria-labelledby="grooves"
+                value={groove}
+                onChange={onGrooveChange}
+                name="radio-buttons-grooves"
+              >
+                <FormControlLabel value="1" control={<Radio />} label="1" />
+                <FormControlLabel value="2" control={<Radio />} label="2" />
+                <FormControlLabel value="3" control={<Radio />} label="3" />
+              </RadioGroup>
+            </FormControl>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
