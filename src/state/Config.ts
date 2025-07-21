@@ -1,12 +1,12 @@
 import { Vector3 } from "three";
 
 const SCENE = {
-  CAMERA_POSITION: new Vector3(0, 1.25, 2),
+  CAMERA_POSITION: new Vector3(0, 2.5, 4),
 };
 
 const TIMELINE = {
-  START_POS: 31,
-  END_POS: 74,
+  START_POS: 12.5,
+  END_POS: 97,
   PLAY_SPEED: 10.75 / 60,
   DEFAULT_BEATS_SECOND: 60,
 };

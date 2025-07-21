@@ -14,7 +14,6 @@ import FormLabel from "@mui/material/FormLabel";
 import useStore from "../state/store";
 import { playSound, preloadSounds } from "react-sounds";
 import { SOUNDS } from "../state/Sounds";
-import Box from "@mui/material/Box";
 
 const TimeLine = () => {
   const requestRef = useRef(0);
@@ -145,12 +144,10 @@ const TimeLine = () => {
     <>
       {!freePlay && <div ref={elemRef} id="timeLine" className="panel"></div>}
       {!freePlay && (
-        <div id="play" className="panel">
-          <Typography variant="h6" sx={{ textAlign: "center" }}>
-            Beats
-          </Typography>
+        <div id="play" className="panel textCenter">
+          <Typography variant="h6">Beats</Typography>
           <Donut
-            diameter={150}
+            diameter={100}
             min={15}
             max={180}
             step={1}
@@ -163,38 +160,40 @@ const TimeLine = () => {
             ariaLabelledBy={"my-label"}
           />
           <IconButton onClick={reset}>
-            <FastRewindIcon sx={{ fontSize: 60 }} />
+            <FastRewindIcon sx={{ fontSize: 40 }} />
           </IconButton>
           {isPlaying ? (
             <IconButton onClick={togglePlay}>
-              <PauseCircleOutlineIcon sx={{ fontSize: 70 }} />
+              <PauseCircleOutlineIcon sx={{ fontSize: 40 }} />
             </IconButton>
           ) : (
             <IconButton onClick={togglePlay}>
-              <PlayCircleOutlineIcon sx={{ fontSize: 70 }} />
+              <PlayCircleOutlineIcon sx={{ fontSize: 40 }} />
             </IconButton>
           )}
-          <div>
-            <FormControl>
-              <FormLabel
-                id="grooves"
-                sx={{ textAlign: "center", color: "black" }}
-              >
-                Groove
-              </FormLabel>
-              <RadioGroup
-                row
-                aria-labelledby="grooves"
-                value={groove}
-                onChange={onGrooveChange}
-                name="radio-buttons-grooves"
-              >
-                <FormControlLabel value="1" control={<Radio />} label="1" />
-                <FormControlLabel value="2" control={<Radio />} label="2" />
-                <FormControlLabel value="3" control={<Radio />} label="3" />
-              </RadioGroup>
-            </FormControl>
-          </div>
+        </div>
+      )}
+      {!freePlay && (
+        <div id="grooveContainer" className="panel">
+          <FormControl>
+            <FormLabel
+              id="grooves"
+              sx={{ textAlign: "center", color: "black" }}
+            >
+              Groove
+            </FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="grooves"
+              value={groove}
+              onChange={onGrooveChange}
+              name="radio-buttons-grooves"
+            >
+              <FormControlLabel value="1" control={<Radio />} label="1" />
+              <FormControlLabel value="2" control={<Radio />} label="2" />
+              <FormControlLabel value="3" control={<Radio />} label="3" />
+            </RadioGroup>
+          </FormControl>
         </div>
       )}
     </>

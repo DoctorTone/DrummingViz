@@ -16,6 +16,9 @@ body {
   position: absolute;
   z-index: 100;
 }
+.textCenter {
+  text-align: center;
+}
 .w-100 {
   width: 100%;
 }
@@ -31,23 +34,27 @@ body {
 }
 #score {
   top: 1%;
-  left: 25%;
-  width: 50%;
+  left: 0%;
+  width: 100%;
+}
+#grooveContainer {
+  right: 0%;
+  top: 20%;
 }
 #timeLine {
   top: 1.5%;
-  left: 31%;
+  left: 12.5%;
   width: 3px;
-  margin-top: 1.9%;
-  height: 90px;
+  margin-top: 4%;
+  height: 60px;
   background-color: red;
   z-index: 150;
 }
 #play {
-  top: 1%;
-  right: 2.5%;
+  top: 12.5%;
+  left: 2.5%;
 }
 #freePlay {
-  top: 2.5%;
+  bottom: 2.5%;
   left: 2.5%;
 }
