@@ -5,6 +5,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
 import useStore from "../state/store";
 
 const InfoDialog = () => {
@@ -32,13 +33,21 @@ const InfoDialog = () => {
         <DialogTitle>Drum Visualisation</DialogTitle>
         <DialogContent dividers>
           <Typography variant="h6">
-            "Drum Kit" (https://skfb.ly/p9FOp) by art.katja is licensed under
-            Creative Commons Attribution
-            (http://creativecommons.org/licenses/by/4.0/).
+            <Link variant="h6" underline="none" href="https://skfb.ly/p9FOp">
+              Drum Kit{" "}
+            </Link>
+            by art.katja is licensed under{" "}
+            <Link
+              variant="h6"
+              underline="none"
+              href="http://creativecommons.org/licenses/by/4.0/"
+            >
+              Creative Commons Attribution
+            </Link>
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" onClick={handleClose}>
+          <Button variant="contained" onClick={handleClose}>
             OK
           </Button>
         </DialogActions>

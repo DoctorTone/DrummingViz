@@ -30,7 +30,7 @@ body {
 }
 #info {
   right: 2%;
-  bottom: 2%;
+  bottom: 5.5%;
 }
 #score {
   top: 1%;
@@ -55,6 +55,6 @@ body {
   left: 2.5%;
 }
 #freePlay {
-  bottom: 2.5%;
+  bottom: 5.5%;
   left: 2.5%;
 }
