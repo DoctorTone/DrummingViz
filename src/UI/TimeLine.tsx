@@ -19,9 +19,8 @@ import Box from "@mui/material/Box";
 const TimeLine = () => {
   const requestRef = useRef(0);
   const elemRef = useRef<HTMLDivElement>(null);
-  const positionRef = useRef(0);
   const playingRef = useRef(false);
-  const elapsedRef = useRef(0);
+  const playingTimeRef = useRef(0);
   const noteIndexRef = useRef(0);
   const grooveRef = useRef("1");
   const interactionRef = useRef(false);
@@ -59,9 +58,8 @@ const TimeLine = () => {
 
   const reset = () => {
     setIsPlaying(false);
-    positionRef.current = 0;
     elemRef.current!.style.left = `${TIMELINE.START_POS}%`;
-    elapsedRef.current = 0;
+    playingTimeRef.current = 0;
     noteIndexRef.current = 0;
   };
 
@@ -91,13 +89,11 @@ const TimeLine = () => {
     lastTime = timeStamp_s;
 
     if (playingRef.current) {
-      elapsedRef.current += delta;
-
       // Timeline animation
       const timeScale = beatsRef.current / 60;
-      positionRef.current += delta * timeScale;
+      playingTimeRef.current += delta * timeScale;
 
-      let percent = positionRef.current / 4;
+      let percent = playingTimeRef.current / 4;
       if (percent >= 1) {
         percent = 0;
       }
@@ -108,10 +104,7 @@ const TimeLine = () => {
       // Play sounds
       const notes = getNextNotes();
       for (let i = 0; i < notes.length; ++i) {
-        if (
-          elapsedRef.current >=
-          notes[i].time * (TIMELINE.DEFAULT_BEATS_SECOND / beatsRef.current)
-        ) {
+        if (playingTimeRef.current >= notes[i].time) {
           playDrum(notes[i].drum);
           showEffect(notes[i].drum, true);
           ++noteIndexRef.current;
@@ -119,8 +112,7 @@ const TimeLine = () => {
       }
       if (noteIndexRef.current >= currentScore.length) {
         noteIndexRef.current = 0;
-        elapsedRef.current = 0;
-        positionRef.current = 0;
+        playingTimeRef.current = 0;
       }
     }
 
