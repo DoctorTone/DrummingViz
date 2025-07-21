@@ -30,7 +30,7 @@ const Intro = () => {
               opacity: 0.65,
               backgroundColor: "black",
               color: "white",
-              height: "50%",
+              height: "55%",
               borderRadius: "30px",
             },
           },
@@ -45,6 +45,9 @@ const Intro = () => {
           </Box>
           <Typography variant="h6" sx={{ textAlign: "center" }}>
             Select the groove, select the speed and start playing!
+          </Typography>
+          <Typography variant="h6" sx={{ textAlign: "center" }}>
+            Free Play - bash those drums!!
           </Typography>
         </DialogContent>
         <DialogActions>
