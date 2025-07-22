@@ -33,7 +33,13 @@ const InfoDialog = () => {
         <DialogTitle>Drum Visualisation</DialogTitle>
         <DialogContent dividers>
           <Typography variant="h6">
-            <Link variant="h6" underline="none" href="https://skfb.ly/p9FOp">
+            <Link
+              variant="h6"
+              underline="none"
+              href="https://skfb.ly/p9FOp"
+              target="_blank"
+              rel="noopener"
+            >
               Drum Kit{" "}
             </Link>
             by art.katja is licensed under{" "}
@@ -41,6 +47,8 @@ const InfoDialog = () => {
               variant="h6"
               underline="none"
               href="http://creativecommons.org/licenses/by/4.0/"
+              target="_blank"
+              rel="noopener"
             >
               Creative Commons Attribution
             </Link>

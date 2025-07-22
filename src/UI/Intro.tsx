@@ -26,11 +26,11 @@ const Intro = () => {
         fullWidth={true}
         slotProps={{
           paper: {
+            className: "paperHeight",
             sx: {
               opacity: 0.65,
               backgroundColor: "black",
               color: "white",
-              height: "55%",
               borderRadius: "30px",
             },
           },
