@@ -40,7 +40,7 @@ const Intro = () => {
           Welcome to Drum Viz!
         </DialogTitle>
         <DialogContent dividers>
-          <Box sx={{ textAlign: "center" }}>
+          <Box className="showImage" sx={{ textAlign: "center" }}>
             <img className="w-25" src="./images/drums-icon.jpg" />
           </Box>
           <Typography variant="h6" sx={{ textAlign: "center" }}>

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { SCORES, TIMELINE, DRUMS } from "../state/Config";
+import { SCORES, DRUMS } from "../state/Config";
 import IconButton from "@mui/material/IconButton";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";

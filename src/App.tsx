@@ -1,6 +1,5 @@
 import { Canvas } from "@react-three/fiber";
 import { Sky, Stage, OrbitControls } from "@react-three/drei";
-import { SCENE } from "./state/Config";
 import Info from "./UI/Info";
 import { DrumKit2 } from "./models/DrumKit2";
 import { Suspense } from "react";
