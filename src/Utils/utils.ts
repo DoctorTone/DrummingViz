@@ -9,5 +9,9 @@ export const getScreenConfiguration = (width: number, height: number) => {
     return CONFIGURATIONS[CONFIG_TYPE.LANDSCAPE];
   }
 
+  if (width <= RESOLUTIONS.LARGE) {
+    return CONFIGURATIONS[CONFIG_TYPE.LARGE];
+  }
+
   return CONFIGURATIONS[CONFIG_TYPE.SMALL];
 };

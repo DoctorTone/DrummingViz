@@ -61,17 +61,17 @@ body {
 .paperHeight {
   height: 55%;
 }
-@media (min-width: 800px) and (orientation: landscape) {
+@media (min-width: 700px) and (orientation: landscape) {
   #score {
     left: 20%;
     width: 60%;
   }
   #play {
     top: 2%;
-    left: 85%;
+    left: 82.5%;
   }
   #grooveContainer {
-    top: 70%;
+    top: 65%;
   }
   #freePlay {
     bottom: 80%;
@@ -81,5 +81,16 @@ body {
   }
   #timeLine {
     left: 27%;
+  }
+}
+@media (min-width: 900px) {
+  #play {
+    left: 85%;
+  }
+  #grooveContainer {
+    top: 30%;
+  }
+  #freePlay {
+    bottom: 85%;
   }
 }
