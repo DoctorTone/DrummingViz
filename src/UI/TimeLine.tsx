@@ -14,8 +14,14 @@ import FormLabel from "@mui/material/FormLabel";
 import useStore from "../state/store";
 import { playSound, preloadSounds } from "react-sounds";
 import { SOUNDS } from "../state/Sounds";
+import { getScreenConfiguration } from "../Utils/utils";
 
 const TimeLine = () => {
+  const configuration = getScreenConfiguration(
+    window.innerWidth,
+    window.innerHeight
+  );
+
   const requestRef = useRef(0);
   const elemRef = useRef<HTMLDivElement>(null);
   const playingRef = useRef(false);
@@ -57,7 +63,7 @@ const TimeLine = () => {
 
   const reset = () => {
     setIsPlaying(false);
-    elemRef.current!.style.left = `${TIMELINE.START_POS}%`;
+    elemRef.current!.style.left = `${configuration.TIMELINE_START_POS}%`;
     playingTimeRef.current = 0;
     noteIndexRef.current = 0;
   };
@@ -97,7 +103,9 @@ const TimeLine = () => {
         percent = 0;
       }
       elemRef.current!.style.left = `${
-        TIMELINE.START_POS + (TIMELINE.END_POS - TIMELINE.START_POS) * percent
+        configuration.TIMELINE_START_POS +
+        (configuration.TIMELINE_END_POS - configuration.TIMELINE_START_POS) *
+          percent
       }%`;
 
       // Play sounds

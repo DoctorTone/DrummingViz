@@ -10,11 +10,17 @@ import Effects from "./components/Effects";
 import IntroSound from "./components/IntroSound";
 import Intro from "./UI/Intro";
 import FreePlay from "./components/FreePlay";
+import { getScreenConfiguration } from "./Utils/utils";
 
 function App() {
+  const configuration = getScreenConfiguration(
+    window.innerWidth,
+    window.innerHeight
+  );
+
   return (
     <>
-      <Canvas camera={{ position: SCENE.CAMERA_POSITION }}>
+      <Canvas camera={{ position: configuration.CAMERA_POSITION }}>
         <Sky
           distance={450000}
           sunPosition={[0, 1, 1]}

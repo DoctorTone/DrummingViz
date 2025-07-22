@@ -1,8 +1,33 @@
 import { Vector3 } from "three";
 
+const RESOLUTIONS = {
+  SMALL: 600,
+  MEDIUM: 900,
+  LARGE: 1200,
+  X_LARGE: 1536,
+};
+
 const SCENE = {
   CAMERA_POSITION: new Vector3(0, 2.5, 4),
 };
+
+const CONFIG_TYPE = {
+  SMALL: 0,
+  LANDSCAPE: 1,
+};
+
+const CONFIGURATIONS = [
+  {
+    CAMERA_POSITION: new Vector3(0, 2.5, 4),
+    TIMELINE_START_POS: 12.5,
+    TIMELINE_END_POS: 97,
+  },
+  {
+    CAMERA_POSITION: new Vector3(0, 1.5, 1.75),
+    TIMELINE_START_POS: 27,
+    TIMELINE_END_POS: 78.5,
+  },
+];
 
 const TIMELINE = {
   START_POS: 12.5,
@@ -91,4 +116,14 @@ const SCORES = [
   ],
 ];
 
-export { SCENE, TIMELINE, GROOVES, DRUMS, SCORES, EFFECTS };
+export {
+  SCENE,
+  TIMELINE,
+  GROOVES,
+  DRUMS,
+  SCORES,
+  EFFECTS,
+  RESOLUTIONS,
+  CONFIGURATIONS,
+  CONFIG_TYPE,
+};
