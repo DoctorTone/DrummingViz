@@ -121,3 +121,19 @@ body {
     left: 20%;
   }
 }
+@media (min-width: 1200px) {
+  #score {
+    left: 15%;
+    width: 70%;
+  }
+  #play {
+    left: 90%;
+  }
+  #info {
+    right: 93%;
+  }
+  #timeLine {
+    left: 23.5%;
+    height: 80px;
+  }
+}

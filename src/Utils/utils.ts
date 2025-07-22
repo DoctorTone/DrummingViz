@@ -17,5 +17,9 @@ export const getScreenConfiguration = (width: number, height: number) => {
     return CONFIGURATIONS[CONFIG_TYPE.LARGE];
   }
 
+  if (width <= RESOLUTIONS.X_LARGE) {
+    return CONFIGURATIONS[CONFIG_TYPE.TABLET];
+  }
+
   return CONFIGURATIONS[CONFIG_TYPE.SMALL];
 };
