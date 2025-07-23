@@ -61,6 +61,18 @@ body {
 .paperHeight {
   height: 55%;
 }
+@media (min-width: 700px) {
+  .showImage img {
+    display: inline;
+  }
+  #score {
+    left: 10%;
+    width: 80%;
+  }
+  #timeLine {
+    left: 20%;
+  }
+}
 @media (min-width: 700px) and (orientation: landscape) {
   .paperHeight {
     height: 65%;
