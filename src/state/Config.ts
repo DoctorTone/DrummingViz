@@ -17,6 +17,7 @@ const CONFIG_TYPE = {
   LARGE: 2,
   PORTRAIT: 3,
   TABLET: 4,
+  X_LARGE: 5,
 };
 
 const CONFIGURATIONS = [
@@ -44,6 +45,11 @@ const CONFIGURATIONS = [
     CAMERA_POSITION: new Vector3(0, 1.25, 2.15),
     TIMELINE_START_POS: 23.5,
     TIMELINE_END_POS: 83.5,
+  },
+  {
+    CAMERA_POSITION: new Vector3(0, 1.25, 2.15),
+    TIMELINE_START_POS: 27.5,
+    TIMELINE_END_POS: 78.5,
   },
 ];
 

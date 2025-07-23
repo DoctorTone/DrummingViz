@@ -137,3 +137,20 @@ body {
     height: 80px;
   }
 }
+@media (min-width: 1536px) {
+  #score {
+    left: 20%;
+    width: 60%;
+  }
+  #freePlay {
+    bottom: 90%;
+    left: 5%;
+  }
+  #grooveContainer {
+    top: 25%;
+    right: 2.5%;
+  }
+  #timeLine {
+    left: 27.5%;
+  }
+}
