@@ -153,6 +153,9 @@ body {
   }
 }
 @media (min-width: 1536px) {
+  .paperHeight {
+    height: 50%;
+  }
   #score {
     left: 20%;
     width: 60%;

@@ -18,6 +18,7 @@ import { getScreenConfiguration } from "../Utils/utils";
 
 const TimeLine = () => {
   const screenSize = useStore((state) => state.screenSize);
+  //@ts-ignore
   const [timeLine, setTimeLine] = useState({ start: 12.5, end: 97 });
   const startRef = useRef(12.5);
   const endRef = useRef(97);

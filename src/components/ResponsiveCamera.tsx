@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useThree } from "@react-three/fiber";
 import { getScreenConfiguration } from "../Utils/utils";
 import useStore from "../state/store";
