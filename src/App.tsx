@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Sky, Stage, OrbitControls } from "@react-three/drei";
 import Info from "./UI/Info";
@@ -10,31 +9,13 @@ import Effects from "./components/Effects";
 import IntroSound from "./components/IntroSound";
 import Intro from "./UI/Intro";
 import FreePlay from "./components/FreePlay";
-import { getScreenConfiguration } from "./Utils/utils";
+import ResponsiveCamera from "./components/ResponsiveCamera";
 
 function App() {
-  const [size, setSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setSize({ width: window.innerWidth, height: window.innerHeight });
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <>
-      <Canvas
-        camera={{
-          position: getScreenConfiguration(size.width, size.height)
-            .CAMERA_POSITION,
-        }}
-      >
+      <Canvas>
+        <ResponsiveCamera />
         <Sky
           distance={450000}
           sunPosition={[0, 1, 1]}
