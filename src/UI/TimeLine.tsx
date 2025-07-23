@@ -17,10 +17,23 @@ import { SOUNDS } from "../state/Sounds";
 import { getScreenConfiguration } from "../Utils/utils";
 
 const TimeLine = () => {
-  const configuration = getScreenConfiguration(
-    window.innerWidth,
-    window.innerHeight
-  );
+  const screenSize = useStore((state) => state.screenSize);
+  const [timeLine, setTimeLine] = useState({ start: 12.5, end: 97 });
+  const startRef = useRef(12.5);
+  const endRef = useRef(97);
+
+  useEffect(() => {
+    const configuration = getScreenConfiguration(
+      screenSize.width,
+      screenSize.height
+    );
+    setTimeLine({
+      start: configuration.TIMELINE_START_POS,
+      end: configuration.TIMELINE_END_POS,
+    });
+    startRef.current = configuration.TIMELINE_START_POS;
+    endRef.current = configuration.TIMELINE_END_POS;
+  }, [screenSize.width, screenSize.height]);
 
   const requestRef = useRef(0);
   const elemRef = useRef<HTMLDivElement>(null);
@@ -63,7 +76,7 @@ const TimeLine = () => {
 
   const reset = () => {
     setIsPlaying(false);
-    elemRef.current!.style.left = `${configuration.TIMELINE_START_POS}%`;
+    elemRef.current!.style.left = `${startRef.current}%`;
     playingTimeRef.current = 0;
     noteIndexRef.current = 0;
   };
@@ -103,9 +116,7 @@ const TimeLine = () => {
         percent = 0;
       }
       elemRef.current!.style.left = `${
-        configuration.TIMELINE_START_POS +
-        (configuration.TIMELINE_END_POS - configuration.TIMELINE_START_POS) *
-          percent
+        startRef.current + (endRef.current - startRef.current) * percent
       }%`;
 
       // Play sounds

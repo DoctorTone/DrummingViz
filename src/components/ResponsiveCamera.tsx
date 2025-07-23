@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { useThree } from "@react-three/fiber";
 import { getScreenConfiguration } from "../Utils/utils";
+import useStore from "../state/store";
 
 const ResponsiveCamera = () => {
-  const [size, setSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const screenSize = useStore((state) => state.screenSize);
+  const setScreenSize = useStore((state) => state.setScreenSize);
+
   const { camera } = useThree();
 
   useEffect(() => {
     const handleResize = () => {
-      setSize({ width: window.innerWidth, height: window.innerHeight });
+      setScreenSize({ width: window.innerWidth, height: window.innerHeight });
     };
 
     window.addEventListener("resize", handleResize);
@@ -19,12 +19,13 @@ const ResponsiveCamera = () => {
   }, []);
 
   useEffect(() => {
-    const configuration = getScreenConfiguration(size.width, size.height);
+    const configuration = getScreenConfiguration(
+      screenSize.width,
+      screenSize.height
+    );
     camera.position.copy(configuration.CAMERA_POSITION);
     camera.updateProjectionMatrix();
-    // DEBUG
-    console.log("Cam pos set to ", camera.position);
-  }, [size.width, size.height]);
+  }, [screenSize.width, screenSize.height]);
 
   return null;
 };

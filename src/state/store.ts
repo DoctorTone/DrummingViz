@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import type { ScreenSize } from "./Config";
 
 interface DrumState {
   infoDialogOpen: boolean;
@@ -13,6 +14,8 @@ interface DrumState {
   setHitState: (drum: string) => void;
   freePlay: boolean;
   toggleFreePlay: () => void;
+  screenSize: ScreenSize;
+  setScreenSize: (size: ScreenSize) => void;
 }
 
 const useStore = create<DrumState>((set) => ({
@@ -33,6 +36,9 @@ const useStore = create<DrumState>((set) => ({
   setHitState: (drum) => set(() => ({ hitState: drum })),
   freePlay: false,
   toggleFreePlay: () => set((state) => ({ freePlay: !state.freePlay })),
+  screenSize: { width: window.innerWidth, height: window.innerHeight },
+  setScreenSize: (size) =>
+    set((state) => ({ screenSize: { ...state.screenSize, ...size } })),
 }));
 
 export default useStore;

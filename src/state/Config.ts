@@ -140,6 +140,11 @@ const SCORES = [
   ],
 ];
 
+export type ScreenSize = {
+  width: number;
+  height: number;
+};
+
 export {
   SCENE,
   TIMELINE,
