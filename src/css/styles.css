@@ -116,6 +116,9 @@ body {
   }
 }
 @media (min-width: 900px) and (orientation: portrait) {
+  .paperHeight {
+    height: 45%;
+  }
   #score {
     left: 10%;
     width: 80%;
